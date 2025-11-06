@@ -19,7 +19,7 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Room nextRoom;
-    
+
     /**
      * Create the game and initialise its internal map.
      */
@@ -35,14 +35,14 @@ public class Game
     private void createRooms()
     {
         Room outside, theater, pub, lab, office;
-      
+
         // create the rooms
         outside = new Room("outside the main entrance of the university");
         theater = new Room("in a lecture theater");
         pub = new Room("in the campus pub");
         lab = new Room("in a computing lab");
         office = new Room("in the computing admin office");
-        
+
         // initialise room exits
         outside.setExits(null, theater, lab, pub);
         theater.setExits(null, null, null, outside);
@@ -63,7 +63,7 @@ public class Game
 
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.
-        
+
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
@@ -76,24 +76,22 @@ public class Game
      * Print out the opening message for the player.
      */
     private void printWelcome()
-{
-    System.out.println();
-    System.out.println("Welcome to the World of Zuul!");
-    System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-    System.out.println("Type 'help' if you need help.");
-    System.out.println("  ");
-    printLocationInfo();
-}
+    {
+        System.out.println();
+        System.out.println("Welcome to the World of Zuul!");
+        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("Type 'help' if you need help.");
+        System.out.println("  ");
+        printLocationInfo();
+    }
 
 
-
-
-   /**
+    /**
      * Given a command, process (that is: execute) the command.   * @param command The command to be processed.
-  * @return true If the command ends the game, false otherwise.
+     * @return true If the command ends the game, false otherwise.
      */    private boolean processCommand(Command command) 
     {
-       boolean wantToQuit = false;
+        boolean wantToQuit = false;
         if(command.isUnknown()) {
             System.out.println("I don't know what you mean...");
             return false;
@@ -113,7 +111,6 @@ public class Game
         return wantToQuit;
     }
 
-    
 
     /**
      * Print out some help information.
@@ -135,7 +132,8 @@ public class Game
      */
     private void goRoom(Command command) 
     {
-        
+        String direction = command.getSecondWord();
+        Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
@@ -147,33 +145,30 @@ public class Game
     }
 
     
-    
-private void printLocationInfo()  { //Q
-    System.out.println("You are " + currentRoom.getDescription());
-    System.out.print("Exits: ");
-    if(currentRoom.northExit != null) {
-        System.out.print("north ");
+    private void printLocationInfo()  { 
+        System.out.println("You are " + currentRoom.getDescription());
+        System.out.print("Exits: ");
+        if(currentRoom.getExit("north") != null) {
+            System.out.print("north ");
+        }
+        if(currentRoom.getExit ("east")!= null) {
+            System.out.print("east ");
+        }
+        if(currentRoom.getExit("south") != null) {
+            System.out.print("south ");
+        }
+        if(currentRoom.getExit("west") != null) {
+            System.out.print("west ");
+        }
+        System.out.println();
     }
-    if(currentRoom.eastExit != null) {
-        System.out.print("east ");
-    }
-    if(currentRoom.southExit != null) {
-        System.out.print("south ");
-    }
-    if(currentRoom.westExit != null) {
-        System.out.print("west ");
-    }
-    System.out.println();
-}
+
     
-    
-    
-        
     
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.
-  * @return true, if this command quits the game, false otherwise.
+     * @return true, if this command quits the game, false otherwise.
      */
     private boolean quit(Command command) 
     {

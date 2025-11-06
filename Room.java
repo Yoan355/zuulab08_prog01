@@ -14,11 +14,11 @@
  */
 public class Room 
 {
-    private String description;
-    private Room northExit;
-    private Room southExit;
-    private Room eastExit;
-    private Room westExit;
+    public String description;
+    public Room northExit;
+    public Room southExit;
+    public Room eastExit;
+    public Room westExit;
 
     /**
      * Create a room described "description". Initially, it has no exits. 
