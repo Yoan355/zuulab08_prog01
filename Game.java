@@ -159,9 +159,13 @@ public class Game
         }
         if(currentRoom.getExit("west") != null) {
             System.out.print("west ");
-        }
-        System.out.println();
-    }
+         }
+         System.out.println();
+     }
+    
+    
+    
+    
 
     
     
