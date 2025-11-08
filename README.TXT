@@ -33,3 +33,5 @@ originalcode
 9)The keySet method in java HashMap returns a Set view of all the keys
 that are in the map.In our case, it returns the key's of the directions,
 north,south,east or west. 
+
+12)the object diagram changes to reflect the player's movement between rooms
