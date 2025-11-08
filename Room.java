@@ -98,30 +98,38 @@ public class Room
      * @return A description of the available exits. */
 
     public String getExitString() { // Q7
+        // String exitString = "Exits: ";
+        // if (northExit !=null){
+        // exitString += "north: ";
+        // }
+
+        // if (eastExit !=null){
+        // exitString += "east: ";
+        // }
+
+        // if (southExit !=null){
+        // exitString += "south: ";
+        // }
+
+        // if (westExit !=null){
+        // exitString += "west: ";
+        // }
+
+        // if(upExit != null){ //q8
+        // exitString +="up: ";
+
+        // }
+
+        // if (downExit != null){ //q8
+        // exitString += "down: ";
+
+        // }
+
+        // return exitString;
+
         String exitString = "Exits: ";
-        if (northExit !=null){
-            exitString += "north: ";
-        }
-
-        if (eastExit !=null){
-            exitString += "east: ";
-        }
-
-        if (southExit !=null){
-            exitString += "south: ";
-        }
-
-        if (westExit !=null){
-            exitString += "west: ";
-        }
-
-        if(upExit != null){ //q8
-            exitString +="up: ";
-
-        }
-
-        if (downExit != null){ //q8
-            exitString += "down: ";
+        for(String direction : exits.keySet()){ //q10
+            exitString += direction + " ";  
 
         }
 

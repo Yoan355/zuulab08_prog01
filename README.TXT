@@ -30,4 +30,6 @@ originalcode
 
 /////////////////////Awnsers////////////////////////
 
-5)
+9)The keySet method in java HashMap returns a Set view of all the keys
+that are in the map.In our case, it returns the key's of the directions,
+north,south,east or west. 
