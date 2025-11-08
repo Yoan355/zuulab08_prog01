@@ -18,8 +18,9 @@ import java.util.Scanner;
  */
 public class Parser 
 {
-    private CommandWords commands;  // holds all valid command words
-    private Scanner reader;         // source of command input
+    public CommandWords commands;  // holds all valid command words
+    private Scanner reader;
+    // source of command input
 
     /**
      * Create a parser to read from the terminal window.
@@ -28,6 +29,13 @@ public class Parser
     {
         commands = new CommandWords();
         reader = new Scanner(System.in);
+    }
+    
+    
+    public CommandWords getCommandWords(){
+    
+    return commands; //q16
+    
     }
 
     /**

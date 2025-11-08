@@ -34,4 +34,14 @@ originalcode
 that are in the map.In our case, it returns the key's of the directions,
 north,south,east or west. 
 
-12)the object diagram changes to reflect the player's movement between rooms
+13)the object diagram changes to reflect the player's movement between rooms
+
+17)No because I already added a CommandWords.showAll() method
+that lists valid commands.
+
+
+18) If we will always use a specific fixed set of commands,
+static methods are better.The pros are that it is
+way simpler to use(we just call methods directly) 
+and better cohesion,while the cons are that it has
+tighter coupling.(everything depends on the static class)

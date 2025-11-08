@@ -19,6 +19,7 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Room nextRoom;
+    private CommandWords commandWords;
 
     /**
      * Create the game and initialise its internal map.
@@ -117,6 +118,18 @@ public class Game
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
         }
+        else if (commandWord.equals("look")){
+             System.out.println(currentRoom.getLongDescription());
+             //q14
+
+        }
+        else if(commandWord.equals("give up ")){
+        
+        System.out.println("You gave up,you are a quitter");
+        //q15
+        
+        }
+        
 
         return wantToQuit;
     }
@@ -133,6 +146,7 @@ public class Game
         System.out.println();
         System.out.println("Your command words are:");
         System.out.println("   go quit help");
+        parser.getCommandWords().showAll();//Q16
     }
 
     /** 
