@@ -47,29 +47,9 @@ public class Room
      * @param south The south exit.
      * @param west The west exit.
      */
-    public void setExits(Room north, Room east, Room south, Room west,Room up,Room down) 
+    public void setExits(String direction, Room neighbor) //q8p2
     {
-        if(north != null) {
-            exits.put("north", north);
-        }
-        if(east != null) {
-            exits.put("east", east);
-        }
-        if(south != null) {
-            exits.put("south", south);
-        }
-        if(west != null) {
-            exits.put("west", west);
-        }
-
-        if (up != null){ //q8,q7
-            exits.put("up", up);
-        }
-
-        if(down != null){ //q8,q7
-            exits.put("down", down);
-        }
-
+        exits.put(direction,neighbor);
     }
 
     /**

@@ -44,11 +44,22 @@ public class Game
         office = new Room("in the computing admin office");
 
         // initialise room exits
-        outside.setExits(null, theater, lab, pub,null,null);
-        theater.setExits(null, null, null, outside,null,null);
-        pub.setExits(null, outside, null, null,null,null);
-        lab.setExits(outside, office, null, null,null,null);
-        office.setExits(null, null, null, lab,null,null);
+        
+        outside.setExits("east", theater); //q8p2
+        outside.setExits("south", lab);
+        outside.setExits("west", pub);
+        outside.setExits("down", outside);
+        
+     
+        theater.setExits("west", outside);
+     
+        pub.setExits("east", outside);
+        
+        lab.setExits("north", outside);
+        lab.setExits("east", office);
+       
+        office.setExits("west", lab);
+        office.setExits("up",lab);
 
         // start game outside
         currentRoom = outside;  
@@ -85,7 +96,6 @@ public class Game
         printLocationInfo();
     }
 
-
     /**
      * Given a command, process (that is: execute) the command.   * @param command The command to be processed.
      * @return true If the command ends the game, false otherwise.
@@ -110,7 +120,6 @@ public class Game
 
         return wantToQuit;
     }
-
 
     /**
      * Print out some help information.
@@ -144,7 +153,6 @@ public class Game
         }
     }
 
-    
     private void printLocationInfo()  { 
         System.out.println("You are " + currentRoom.getDescription());
         System.out.print("Exits: ");
@@ -159,15 +167,12 @@ public class Game
         }
         if(currentRoom.getExit("west") != null) {
             System.out.print("west ");
-         }
-         System.out.println();
-     }
-    
-    
-    
-    
+        }
+        System.out.println();
+    }
 
     
+
     
     /** 
      * "Quit" was entered. Check the rest of the command to see
