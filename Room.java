@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 /**
  * Class Room - a room in an adventure game.
  *
@@ -19,6 +21,9 @@ public class Room
     public Room southExit;
     public Room eastExit;
     public Room westExit;
+    public Room upExit;
+    public Room downExit;
+    public HashMap<String,Room> exits;
 
     /**
      * Create a room described "description". Initially, it has no exits. 
@@ -27,7 +32,11 @@ public class Room
      */
     public Room(String description) 
     {
+        HashMap<String, Room> exits = new HashMap<>(); //q8
+
         this.description = description;
+
+        exits= new HashMap<String, Room >();
     }
 
     /**
@@ -38,20 +47,29 @@ public class Room
      * @param south The south exit.
      * @param west The west exit.
      */
-    public void setExits(Room north, Room east, Room south, Room west) 
+    public void setExits(Room north, Room east, Room south, Room west,Room up,Room down) 
     {
         if(north != null) {
-            northExit = north;
+            exits.put("north", north);
         }
         if(east != null) {
-            eastExit = east;
+            exits.put("east", east);
         }
         if(south != null) {
-            southExit = south;
+            exits.put("south", south);
         }
         if(west != null) {
-            westExit = west;
+            exits.put("west", west);
         }
+
+        if (up != null){ //q8,q7
+            exits.put("up", up);
+        }
+
+        if(down != null){ //q8,q7
+            exits.put("down", down);
+        }
+
     }
 
     /**
@@ -83,20 +101,23 @@ public class Room
 
         }
 
-        return null;
-    
-    }
-    
-    
-    
-    
-    /** * Return a description of the room’s exits,
-* for example, "Exits: north west".
-* @return A description of the available exits. */
+        if (direction.equals ("up")){ //q8
+            return upExit;
+        }
 
-     
-public String getExitString() { // Q7
-    
+        if (direction.equals ("down")){ //q8
+            return downExit;
+        }
+
+        return null;
+
+    }
+
+    /** * Return a description of the room’s exits,
+     * for example, "Exits: north west".
+     * @return A description of the available exits. */
+
+    public String getExitString() { // Q7
         String exitString = "Exits: ";
         if (northExit !=null){
             exitString += "north: ";
@@ -114,10 +135,17 @@ public String getExitString() { // Q7
             exitString += "west: ";
         }
 
+        if(upExit != null){ //q8
+            exitString +="up: ";
+
+        }
+
+        if (downExit != null){ //q8
+            exitString += "down: ";
+
+        }
+
         return exitString;
 
-
-
-
-}
+    }
 }
