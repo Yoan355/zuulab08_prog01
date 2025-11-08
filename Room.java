@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Class Room - a room in an adventure game.
@@ -49,7 +50,7 @@ public class Room
      */
     public void setExits(String direction, Room neighbor) //q8p2
     {
-        exits.put(direction,neighbor);
+ ;
     }
 
     /**
@@ -63,6 +64,7 @@ public class Room
     public Room getExit(String direction){
         if (direction.equals("north")){
             return northExit;
+            
 
         }
 
@@ -92,48 +94,56 @@ public class Room
         return null;
 
     }
+    
+    public String getLongDescription(){ //q11
+        return "You are " + description + ".\n" + getExitString();
 
+    }
+    
+    
     /** * Return a description of the room’s exits,
      * for example, "Exits: north west".
      * @return A description of the available exits. */
 
     public String getExitString() { // Q7
-        // String exitString = "Exits: ";
-        // if (northExit !=null){
-        // exitString += "north: ";
-        // }
-
-        // if (eastExit !=null){
-        // exitString += "east: ";
-        // }
-
-        // if (southExit !=null){
-        // exitString += "south: ";
-        // }
-
-        // if (westExit !=null){
-        // exitString += "west: ";
-        // }
-
-        // if(upExit != null){ //q8
-        // exitString +="up: ";
-
-        // }
-
-        // if (downExit != null){ //q8
-        // exitString += "down: ";
-
-        // }
-
-        // return exitString;
-
         String exitString = "Exits: ";
-        for(String direction : exits.keySet()){ //q10
-            exitString += direction + " ";  
+        if (northExit !=null){
+        exitString += "north: ";
+        }
+
+        if (eastExit !=null){
+        exitString += "east: ";
+        }
+
+        if (southExit !=null){
+        exitString += "south: ";
+        }
+
+        if (westExit !=null){
+        exitString += "west: ";
+        }
+
+        if(upExit != null){ //q8
+        exitString +="up: ";
 
         }
 
-        return exitString;
+        if (downExit != null){ //q8
+        exitString += "down: ";
+
+        }
+
+        
+
+        String ExitString = "Exits: ";
+        Set<String> keys = exits.keySet();
+        for(String exit : keys ){ 
+            ExitString += " " + exit;  
+
+
+        }
+
+        return ExitString;
 
     }
 }
